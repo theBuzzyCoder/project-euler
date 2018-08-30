@@ -88,3 +88,12 @@ class PyNumberSeries(object):
         while (next(fibonacciGenerator) < maxValue):
             pass
         return iter(self.fibonacciSeries)
+
+    def getPrimeSeries(self, upto: int) -> list:
+        allNumbers = set(range(2, upto + 1))
+        for i in range(2, int((upto ** 0.5) + 1)):
+            if i not in allNumbers:
+                continue
+            filtered = filter(lambda num: (i != num) and (num % i == 0), allNumbers)
+            allNumbers -= set(filtered)
+        return allNumbers
