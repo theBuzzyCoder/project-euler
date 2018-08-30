@@ -73,8 +73,18 @@ class PyNumberSeries(object):
         return nthElement
 
     def getFibonacciSeriesUpto(self, maxValue: int, first: int = 0, second: int = 1) -> list:
-        first, second = PyNumber(first), PyNumber(second)
-        fibonacciGenerator = self.loopFibonacci()
+        if self.fibonacciSeries:
+            if (self.fibonacciSeries[-1] > maxValue):
+                return filter(lambda number: number < maxValue, self.fibonacciSeries)
+            start = len(self.fibonacciSeries) - 2
+            second = self.fibonacciSeries.pop()
+            first = self.fibonacciSeries.pop()
+            fibonacciGenerator = self.loopFibonacci(first=first, second=second)
+        else:
+            start = 0
+            first, second = PyNumber(first), PyNumber(second)
+            fibonacciGenerator = self.loopFibonacci(first, second)
+
         while (next(fibonacciGenerator) < maxValue):
             pass
-        return self.fibonacciSeries
+        return iter(self.fibonacciSeries)

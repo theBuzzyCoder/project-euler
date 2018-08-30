@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from utils.PyNumber import PyNumber
+from utils.NumericUtils import isDivisible
 
 class Problem1(object):
+
     def calculateMultiplesSum(self, uptoNumber: int):
         """
         If we list all the natural numbers below 10
@@ -13,7 +15,7 @@ class Problem1(object):
         """
         total = 0
         for i in range(uptoNumber):
-            if PyNumber.isDivisible(i, 3) or PyNumber.isDivisible(i, 5):
+            if isDivisible(i, 3) or isDivisible(i, 5):
                 total += i
         return total
 
