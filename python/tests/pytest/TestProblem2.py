@@ -4,7 +4,7 @@
 import pytest
 from src.Problem2 import Problem2
 
-class TestProblem2object):
+class TestProblem2(object):
     def test_one(self):
         assert Problem2().getSum(89) == 44
 
