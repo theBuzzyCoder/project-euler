@@ -3,7 +3,7 @@
 
 import time
 from utils.PyNumberSeries import PyNumberSeries
-from utils.NumericUtils import isEven
+from utils.NumericUtils   import isEven
 
 
 class Problem2(object):
